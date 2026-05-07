@@ -1,7 +1,5 @@
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        if(m==0&&n==0) return;
-        if(n==0) return;
         int i=(m>0)?m-1:Integer.MIN_VALUE;
         int j=(n>0)?n-1:Integer.MIN_VALUE;
         int k=nums1.length-1;
