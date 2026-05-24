@@ -4,8 +4,8 @@ class Solution {
         while(si<=li){
             int mid=(si+li)/2;
             if(nums[mid]==target) return mid;
-            else if(nums[mid]<target) si++;
-            else li--;
+            else if(nums[mid]<target) si=mid+1;
+            else li=mid-1;
         }
         return -1;
     }
