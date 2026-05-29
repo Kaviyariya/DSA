@@ -18,7 +18,7 @@ class Solution {
 
     public int minDays(int[] b, int m, int k) {
         int si = Integer.MAX_VALUE, li = 0, ans = -1;
-        if(b.length<(long)m*k) return -1;
+        if(b.length<m*k) return -1;
         for (int i:b) {
             si = Math.min(si, i);
             li = Math.max(li, i);
