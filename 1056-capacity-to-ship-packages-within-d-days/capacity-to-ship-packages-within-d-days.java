@@ -1,15 +1,15 @@
 class Solution {
-    static boolean capacity(int arr[],int mid,int d){
-        int sum=0,day=1;
+    static boolean day(int arr[],int mid,int d){
+        int sum=0,total=1;
         for(int i=0;i<arr.length;i++){
             if(sum+arr[i]>mid){
+                total++;
                 sum=arr[i];
-                day++;
             }else{
                 sum+=arr[i];
             }
         }
-        return (day<=d);
+        return (total<=d);
     }
     public int shipWithinDays(int[] w, int days) {
         int si=0,li=0;
@@ -20,7 +20,7 @@ class Solution {
         int ans=-1;
         while(si<=li){
             int mid=(si+li)/2;
-            if(capacity(w,mid,days)){
+            if(day(w,mid,days)){
                 ans=mid;
                 li=mid-1;
             }else{
