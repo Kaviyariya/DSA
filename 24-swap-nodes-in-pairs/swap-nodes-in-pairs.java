@@ -12,14 +12,14 @@ class Solution {
     public ListNode swapPairs(ListNode head) {
         ListNode dummy=new ListNode(-1);
         dummy.next=head;
-        ListNode point=dummy;
-        while(point.next!=null&&point.next.next!=null){
-            ListNode swap1=point.next;
-            ListNode swap2=point.next.next;
-            swap1.next=swap2.next;
-            swap2.next=swap1;
-            point.next=swap2;
-            point=swap1;
+        ListNode prev=dummy;
+        while(prev.next!=null && prev.next.next!=null){
+            ListNode s1=prev.next;
+            ListNode s2=prev.next.next;
+            s1.next=s2.next;
+            s2.next=s1;
+            prev.next=s2;
+            prev=s1;
         }
         return dummy.next;
     }
