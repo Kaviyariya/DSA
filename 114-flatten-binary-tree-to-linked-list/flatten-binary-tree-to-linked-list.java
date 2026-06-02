@@ -14,13 +14,23 @@
  * }
  */
 class Solution {
-    TreeNode curr=null;
+    TreeNode prev=null;
+    public void dfs(TreeNode root){
+        if(root==null){
+            return;
+        }
+            dfs(root.right);
+            dfs(root.left);
+            root.left=null;
+            root.right=prev;
+            prev=root;
+            System.out.println(root.val);
+    }
     public void flatten(TreeNode root) {
-     if(root==null) return;
-     flatten(root.right);
-     flatten(root.left);
-     root.right=curr;
-     root.left=null;
-     curr=root;
+        if(root==null){
+            return;
+        }
+        dfs(root);
+        root=prev;
     }
 }
