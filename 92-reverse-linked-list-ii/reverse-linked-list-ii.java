@@ -9,27 +9,43 @@
  * }
  */
 class Solution {
+    static ListNode reverse(ListNode head){
+    ListNode prev = null;
+    ListNode curr = head;
+
+    while(curr != null ){
+        ListNode next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    return prev;
+}
     public ListNode reverseBetween(ListNode head, int left, int right) {
         if (head == null || left == right) return head;
 
     ListNode dummy = new ListNode(0);
     dummy.next = head;
-    ListNode prev = dummy;
-
-    // Step 1: move prev to (left-1) position
+    ListNode a = dummy;
     for (int i = 1; i < left; i++) {
-        prev = prev.next;
+        a = a.next;
     }
-
-    // Step 2: reverse from left to right
-    ListNode curr = prev.next;
-    for (int i = 0; i < right - left; i++) {
-        ListNode temp = curr.next;
-        curr.next = temp.next;
-        temp.next = prev.next;
-        prev.next = temp;
+    ListNode c = dummy;
+    ListNode b=a.next;
+    a.next=null;
+    ListNode rev=b;
+    for(int i=left;i<right;i++){
+        b=b.next;
     }
-
+    c=b.next;
+    b.next=null;
+    b=reverse(rev);
+    a.next=b;
+    while(b.next!=null){
+        b=b.next;
+    }
+    b.next=c;
     return dummy.next;
     }
 }
