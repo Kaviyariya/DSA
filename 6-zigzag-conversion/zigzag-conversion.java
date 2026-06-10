@@ -1,7 +1,7 @@
 class Solution {
     public String convert(String s, int n) {
         String res="";
-        if(n>=s.length()) return s;
+        if(n==1 || n>=s.length()) return s;
         // for(int i=0;i<n;i++){
         //     if(i==1){
         //         for(int j=i;j<s.length();j++){
@@ -17,7 +17,7 @@ class Solution {
         //     System.out.println(res);
         // }
         // return res;
-        if(n==1 || n>s.length()) return s;
+        // if(n==1 || n>s.length()) return s;
         List<List<Character>>list=new ArrayList<>();
         for(int i=0;i<n;i++){
             list.add(new ArrayList<>());
