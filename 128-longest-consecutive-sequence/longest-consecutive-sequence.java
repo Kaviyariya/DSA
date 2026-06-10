@@ -7,7 +7,6 @@ class Solution {
         int s=0,max=0;
         for(int num:set){
             if(!set.contains(num-1)){
-                s=num;
                 int count=0;
             while(set.contains(num++)){
                 count++;
