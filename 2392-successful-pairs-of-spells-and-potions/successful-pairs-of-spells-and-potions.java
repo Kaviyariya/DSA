@@ -6,7 +6,8 @@ class Solution {
             int si=0,li=p.length-1;
             while(si<=li){
             int mid=(si+li)/2;
-            if((long)s[i]*p[mid]>=scs)li=mid-1;
+            long temp=(long)s[i]*p[mid];
+            if(temp>=scs)li=mid-1;
             else si=mid+1;
             }
             s[i]=p.length-si;
