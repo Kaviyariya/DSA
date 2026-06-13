@@ -30,9 +30,6 @@ class Solution {
                map.put(s.charAt(i),end);
             }
             max = Math.max(max, end);
-            System.out.println(map);
-            System.out.println(list);
-            System.out.println(max+" "+j);
         }
         System.out.println(j+"  "+max);
         if(max-j+1>0){
