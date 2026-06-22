@@ -5,26 +5,20 @@ class Solution {
         int n2=0;
         int res=0;
         for(int i=0;i<tokens.length;i++){
-            if(tokens[i].equals("-")){
+            String s=tokens[i];
+            if(s.equals("-")||s.equals("/")||s.equals("*")||s.equals("+")){
                n2=(!st.isEmpty()?st.pop():0);
                n1=(!st.isEmpty()?st.pop():0);
+               if(s.equals("-")){
                 res=n1-n2;
-                st.push(res);
-            }else if(tokens[i].equals("/")){
-                n2=(!st.isEmpty()?st.pop():0);
-                n1=(!st.isEmpty()?st.pop():0);
+               }else if(s.equals("/")){
                 res=n1/n2;
-                st.push(res);
-            }else if(tokens[i].equals("*")){
-                n2=(!st.isEmpty()?st.pop():0);
-                 n1=(!st.isEmpty()?st.pop():0);
+               }else if(s.equals("*")){
                 res=n1*n2;
-                st.push(res);
-            }else if(tokens[i].equals("+")){
-                n2=(!st.isEmpty()?st.pop():0);
-                n1=(!st.isEmpty()?st.pop():0);
+               }else{
                 res=n1+n2;
-                st.push(res);
+               }
+               st.push(res);
             }else{
                 st.push(Integer.parseInt(tokens[i]));
             }
