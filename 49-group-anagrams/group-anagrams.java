@@ -11,6 +11,7 @@ class Solution {
     }
     public List<List<String>> groupAnagrams(String[] strs) {
         int n=strs.length;
+        Arrays.sort(strs);
         List<List<String>>ans=new ArrayList<>();
         int vis[]=new int[n];
         for(int i=0;i<n;i++){
