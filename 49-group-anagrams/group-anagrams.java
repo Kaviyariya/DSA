@@ -1,29 +1,13 @@
 class Solution {
-    static Map<Character,Integer> map(String str){
-        Map<Character,Integer>map=new HashMap<>();
-        for(int i=0;i<str.length();i++){
-            map.put(str.charAt(i),map.getOrDefault(str.charAt(i),0)+1);
-        }
-        return map;
-    }
-    static boolean anagram(Map<Character,Integer>map,String str){
-        int count=0;
-        Map<Character,Integer>m1=new HashMap<>();
-        for(int i=0;i<str.length();i++){
-            char ch=str.charAt(i);
-            if(map.containsKey(ch)){
-                m1.put(ch,m1.getOrDefault(ch,0)+1);
-            }else{
-                return false;
-            }
-        }
-        for(char a:map.keySet()){
-            if(map.get(a)!=m1.get(a)){
-                return false;
-            }
-        }
-        if(map.size()!=m1.size()) return false;
-        return true;
+    static boolean anagram(String s1,String s2){
+        if(s1.length()!=s2.length()) return false;
+        char c1[]=s1.toCharArray();
+        char c2[]=s2.toCharArray();
+        Arrays.sort(c1);
+        Arrays.sort(c2);
+        s1=new String(c1);
+        s2=new String(c2);
+        return s1.equals(s2);
     }
     public List<List<String>> groupAnagrams(String[] strs) {
         int n=strs.length;
@@ -32,17 +16,15 @@ class Solution {
         for(int i=0;i<n;i++){
             if(vis[i]==-1) continue;
             vis[i]=-1;
-            List<String>list=new ArrayList<>();
+           List<String>list=new ArrayList<>();
            list.add(strs[i]);
-           Map<Character,Integer>map=map(strs[i]);
            for(int j=i+1;j<n;j++){
             if(vis[j]==-1) continue;
-            if(anagram(map,strs[j])){
+            if(anagram(strs[i],strs[j])){
                 vis[j]=-1;
                 list.add(strs[j]);
             }
            }
-           System.out.println(list);
            ans.add(list);
         }
         return ans;
